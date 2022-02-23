@@ -1,0 +1,137 @@
+<div class="container">
+  <div class="pure-g">
+    <div class="pure-u-1">
+      <div class="header">
+        <img class="logo" src="../assets/img/phonebook.png" />
+        <p>v 1.0</p>
+      </div>
+    </div>
+  </div>
+  <div class="pure-g">
+    <div class="pure-u-sm-1 pure-u-1-3">
+      <div class="box">
+        <h2><i class="fa fa-user-plus"></i>New contact</h2>
+        <form class="pure-form" #newUser="ngForm">
+          <fieldset class="pure-group">
+            <input
+              type="text"
+              class="pure-input-1-2"
+              placeholder="First Name"
+              [(ngModel)]="newUser.firstName"
+              name="firstName"
+              required
+            />
+            <input
+              type="text"
+              class="pure-input-1-2"
+              placeholder="Last Name"
+              [(ngModel)]="newUser.lastName"
+              name="lastName"
+              required
+            />
+            <input
+              type="tel"
+              class="pure-input-1-2"
+              pattern="[0-9]{3}-[0-9]{7}"
+              placeholder="Phone"
+              [(ngModel)]="newUser.phone"
+              name="phone"
+              required
+            />
+          </fieldset>
+          <button
+            type="submit"
+            (click)="add(newUser)"
+            class="pure-button pure-input-1-2 pure-button-primary"
+            [disabled]="newUser.invalid"
+          >
+            <i class="fa fa-user-plus"></i>Add
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="pure-u-sm-1 pure-u-1-3">
+      <div class="box">
+        <h2><i class="fa fa-search"></i>Search contact</h2>
+        <form class="pure-form">
+          <fieldset class="pure-group">
+            <input
+              type="text"
+              class="pure-input-1-2"
+              [(ngModel)]="searchValue"
+              name="searchValue"
+            />
+          </fieldset>
+          <button
+            type="submit"
+            (click)="search()"
+            class="pure-button pure-input-1-2 pure-button-primary"
+          >
+            <i class="fa fa-search"></i>Search
+          </button>
+          <p></p>
+          <table
+            class="pure-table"
+            *ngIf="searchList != undefined && searchList.length > 0"
+          >
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of searchList">
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.lastName }}</td>
+                <td>{{ user.phone }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+      </div>
+    </div>
+    <div class="pure-u-sm-1 pure-u-1-3">
+      <div class="box">
+        <h2><i class="fa fa-users"></i> Contacts</h2>
+        <table class="pure-table">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Phone</th>
+            </tr>
+          </thead>
+
+          <tbody *ngIf="existContacts()">
+            <tr *ngFor="let user of contacts">
+              <td>{{ user.firstName }}</td>
+              <td>{{ user.lastName }}</td>
+              <td>{{ user.phone }}</td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="!existContacts()">
+            <tr>
+              <td>Arun</td>
+              <td>Kart</td>
+              <td>415-8679089</td>
+            </tr>
+
+            <tr>
+              <td>Juan</td>
+              <td>Torus</td>
+              <td>301-2390930</td>
+            </tr>
+
+            <tr>
+              <td>Nolux</td>
+              <td>Fernandez</td>
+              <td>310-2930291</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

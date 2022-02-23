@@ -1,5 +1,10 @@
 # README #
 
+### Solution
+
+There are 2 projects phonebook-spring-boot for the backend and phonebook-ui-angular for the frontend, in each one there is a README.md with the steps to run the app
+
+
 ### The Phonebook code challenge ###
 
 This is the code challenge for JAVA developers. It aims to determine the coding competence on potential candidates.
