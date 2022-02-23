@@ -13,6 +13,10 @@ AdoptOpenJDK 11 with the vendor JVM OpenJ9 https://adoptopenjdk.net/
 mvn test
 ```
 
+## Database mariadb:10.7
+
+There is a docker-compose that can be used to run the DB or execute setup-database.sh script that will run docker-compose
+
 ## SWAGGER
 
 http://localhost:8887/api/swagger-ui.html
