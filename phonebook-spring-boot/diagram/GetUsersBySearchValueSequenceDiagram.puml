@@ -1,0 +1,17 @@
+@startuml
+!include style.puml
+
+actor User
+User -> GetUsersBySearchValueController: Get All Request
+GetUsersBySearchValueController -> GetUserBySearchValue: create
+GetUserBySearchValue -> UserRepository: findBySearchValue
+UserRepository -> EntityFramework: findBySearchValue
+EntityFramework -> Database: findBySearchValue
+
+Database --> EntityFramework: List<UserEntity>
+EntityFramework --> UserRepository: List<User>
+UserRepository --> GetUserBySearchValue: List<User>
+GetUserBySearchValue --> GetUsersBySearchValueController: List<User>
+GetUsersBySearchValueController --> User: List<UserDto>
+
+@enduml

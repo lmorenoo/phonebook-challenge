@@ -1,0 +1,16 @@
+@startuml
+!include style.puml
+
+actor User
+User -> CreateUserController: Create User Request
+CreateUserController -> CreateUser: create
+CreateUser -> UserRepository: save
+UserRepository -> EntityFramework: save
+EntityFramework -> Database: persist
+
+EntityFramework --> UserRepository: User
+UserRepository --> CreateUser
+CreateUser --> CreateUserController
+CreateUserController --> User: created
+
+@enduml

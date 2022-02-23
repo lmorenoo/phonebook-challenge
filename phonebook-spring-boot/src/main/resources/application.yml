@@ -1,0 +1,17 @@
+server:
+  port: 8887
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: phonebook-challenge
+  datasource:
+    url: jdbc:mariadb://localhost:3306/phonebook?createDatabaseIfNotExist=true
+    username: root
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDBDialect
+    database: MYSQL
+    hibernate:
+      ddl-auto: update

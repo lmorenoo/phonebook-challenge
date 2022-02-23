@@ -1,0 +1,17 @@
+@startuml
+!include style.puml
+
+actor User
+User -> GetAllUserController: Get All Request
+GetAllUserController -> GetAllUsers: get
+GetAllUsers -> UserRepository: findAll
+UserRepository -> EntityFramework: findAll
+EntityFramework -> Database: findAll
+
+Database --> EntityFramework: List<UserEntity>
+EntityFramework --> UserRepository: List<User>
+UserRepository --> GetAllUsers: List<User>
+GetAllUsers --> GetAllUserController: List<User>
+GetAllUserController --> User: List<UserDto>
+
+@enduml
